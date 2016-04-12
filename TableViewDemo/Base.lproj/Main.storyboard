@@ -1,25 +1,107 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="zqm-IR-mri">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="tne-QT-ifu">
+        <!--Wallpaper Table View Controller-->
+        <scene sceneID="4ue-GQ-CZL">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
-                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                <tableViewController id="Kaf-8T-Kyp" customClass="WallpaperTableViewController" customModule="TableViewDemo" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="4x7-vv-ZWB">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="wallPaperCell" id="yLu-vc-Yyl" customClass="WallpaperTableViewCell" customModule="TableViewDemo" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="113.5" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="yLu-vc-Yyl" id="dRD-XK-KOD">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="FdO-Xl-RXq">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                        </imageView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="FdO-Xl-RXq" firstAttribute="leading" secondItem="dRD-XK-KOD" secondAttribute="leading" id="Cyj-KV-amn"/>
+                                        <constraint firstAttribute="bottom" secondItem="FdO-Xl-RXq" secondAttribute="bottom" id="OgF-iM-GNw"/>
+                                        <constraint firstAttribute="trailing" secondItem="FdO-Xl-RXq" secondAttribute="trailing" id="ZqP-OF-gzg"/>
+                                        <constraint firstItem="FdO-Xl-RXq" firstAttribute="top" secondItem="dRD-XK-KOD" secondAttribute="top" id="hxO-8g-qWx"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="seasonImageView" destination="FdO-Xl-RXq" id="7Ef-tg-QTB"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="Kaf-8T-Kyp" id="UUi-9o-uZb"/>
+                            <outlet property="delegate" destination="Kaf-8T-Kyp" id="kbg-8i-Vq5"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="tu1-EZ-G6t"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
+                    <connections>
+                        <segue destination="drA-TM-DGl" kind="show" identifier="wallPaperMasterToDetail" id="A7J-Rx-big"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ANE-nl-A8j" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="545" y="-1222"/>
+        </scene>
+        <!--Wall Paper Detail View Controller-->
+        <scene sceneID="wfG-FA-ePr">
+            <objects>
+                <viewController id="drA-TM-DGl" customClass="WallPaperDetailViewController" customModule="TableViewDemo" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="zMV-Gg-fgm"/>
+                        <viewControllerLayoutGuide type="bottom" id="hQu-e4-tSg"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="gx1-Db-PwX">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="t9m-sD-J14">
+                                <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="t9m-sD-J14" firstAttribute="top" secondItem="zMV-Gg-fgm" secondAttribute="bottom" id="P4u-dH-TAn"/>
+                            <constraint firstItem="t9m-sD-J14" firstAttribute="leading" secondItem="gx1-Db-PwX" secondAttribute="leading" id="P8s-dd-G81"/>
+                            <constraint firstAttribute="trailing" secondItem="t9m-sD-J14" secondAttribute="trailing" id="bzF-mw-jni"/>
+                            <constraint firstItem="hQu-e4-tSg" firstAttribute="top" secondItem="t9m-sD-J14" secondAttribute="bottom" id="ojH-9C-2Da"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="wallPaperImageView" destination="t9m-sD-J14" id="s44-EI-UOv"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0xF-T8-RYo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="997" y="-1222"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="qDI-lb-1Mv">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="zqm-IR-mri" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="2Lc-EK-xZS">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Kaf-8T-Kyp" kind="relationship" relationship="rootViewController" id="Tk8-PE-7Ts"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Kvn-ps-JTO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="154" y="-1228"/>
         </scene>
     </scenes>
 </document>
