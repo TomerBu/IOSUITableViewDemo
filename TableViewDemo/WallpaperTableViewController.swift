@@ -83,6 +83,7 @@ class WallpaperTableViewController: UITableViewController {
         
         if let wallPaper = dataSource.wallPaperForRowAtIndexPath(indexPath){
             cell.seasonImageView.image = wallPaper.image
+            
             cell.paperTitleLabel.text = wallPaper.title
             cell.paperSubTitleLabel.text = wallPaper.subTitle
             

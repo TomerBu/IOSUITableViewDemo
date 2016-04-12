@@ -11,7 +11,13 @@ import UIKit
 class WallpaperTableViewCell: UITableViewCell {
 
     @IBOutlet weak var backgroundImageView: UIImageView!
-    @IBOutlet weak var seasonImageView: UIImageView!
+    @IBOutlet weak var seasonImageView: UIImageView!{
+        didSet{
+            seasonImageView.layer.cornerRadius = 5
+            seasonImageView.layer.borderWidth = 1
+            seasonImageView.layer.borderColor = UIColor.grayColor().colorWithAlphaComponent(0.2).CGColor
+        }
+    }
 
     @IBOutlet weak var paperTitleLabel: UILabel!
     
