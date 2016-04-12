@@ -3,6 +3,8 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Wallpaper Table View Controller-->
@@ -15,24 +17,75 @@
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="wallPaperCell" id="yLu-vc-Yyl" customClass="WallpaperTableViewCell" customModule="TableViewDemo" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="113.5" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="114" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="yLu-vc-Yyl" id="dRD-XK-KOD">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="FdO-Xl-RXq">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lyG-iN-shF">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                                         </imageView>
+                                        <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dN2-Zc-1fa">
+                                            <rect key="frame" x="28" y="0.5" width="292" height="43.5"/>
+                                            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="b7T-0f-bJh">
+                                                <rect key="frame" x="0.0" y="0.0" width="292" height="43.5"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                <subviews>
+                                                    <visualEffectView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TiK-CU-jzW">
+                                                        <rect key="frame" x="-28" y="-0.5" width="0.0" height="0.0"/>
+                                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" id="OEx-kd-tAB">
+                                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                        </view>
+                                                        <vibrancyEffect>
+                                                            <blurEffect style="light"/>
+                                                        </vibrancyEffect>
+                                                    </visualEffectView>
+                                                </subviews>
+                                            </view>
+                                            <blurEffect style="light"/>
+                                        </visualEffectView>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="01-January" translatesAutoresizingMaskIntoConstraints="NO" id="FdO-Xl-RXq">
+                                            <rect key="frame" x="0.0" y="0.0" width="36" height="44"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" secondItem="FdO-Xl-RXq" secondAttribute="height" multiplier="9:11" id="7S5-ob-HOG"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8th-Zs-IDz">
+                                            <rect key="frame" x="44" y="0.0" width="43" height="28"/>
+                                            <fontDescription key="fontDescription" name="OriyaSangamMN-Bold" family="Oriya Sangam MN" pointSize="20"/>
+                                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Qj-Nm-192">
+                                            <rect key="frame" x="44" y="25" width="39" height="18"/>
+                                            <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="16"/>
+                                            <color key="textColor" red="0.41608573717948716" green="0.41608573717948716" blue="0.41608573717948716" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="FdO-Xl-RXq" firstAttribute="leading" secondItem="dRD-XK-KOD" secondAttribute="leading" id="Cyj-KV-amn"/>
-                                        <constraint firstAttribute="bottom" secondItem="FdO-Xl-RXq" secondAttribute="bottom" id="OgF-iM-GNw"/>
-                                        <constraint firstAttribute="trailing" secondItem="FdO-Xl-RXq" secondAttribute="trailing" id="ZqP-OF-gzg"/>
-                                        <constraint firstItem="FdO-Xl-RXq" firstAttribute="top" secondItem="dRD-XK-KOD" secondAttribute="top" id="hxO-8g-qWx"/>
+                                        <constraint firstItem="dN2-Zc-1fa" firstAttribute="top" secondItem="dRD-XK-KOD" secondAttribute="top" id="91e-vP-7Se"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="1Qj-Nm-192" secondAttribute="bottom" constant="-7" id="9SL-l9-lPm"/>
+                                        <constraint firstItem="lyG-iN-shF" firstAttribute="top" secondItem="dRD-XK-KOD" secondAttribute="top" id="BHX-RU-jRi"/>
+                                        <constraint firstItem="FdO-Xl-RXq" firstAttribute="top" secondItem="dRD-XK-KOD" secondAttribute="top" id="ExY-ny-RI5"/>
+                                        <constraint firstAttribute="bottom" secondItem="lyG-iN-shF" secondAttribute="bottom" id="Nsl-GK-tNn"/>
+                                        <constraint firstAttribute="trailing" secondItem="dN2-Zc-1fa" secondAttribute="trailing" id="TJC-Ou-VOZ"/>
+                                        <constraint firstAttribute="bottom" secondItem="dN2-Zc-1fa" secondAttribute="bottom" id="Wj6-g3-jfZ"/>
+                                        <constraint firstItem="1Qj-Nm-192" firstAttribute="leading" secondItem="FdO-Xl-RXq" secondAttribute="trailing" constant="8" id="dlr-3y-nnR"/>
+                                        <constraint firstItem="FdO-Xl-RXq" firstAttribute="leading" secondItem="dRD-XK-KOD" secondAttribute="leading" id="g3Z-L8-6vC"/>
+                                        <constraint firstItem="8th-Zs-IDz" firstAttribute="leading" secondItem="FdO-Xl-RXq" secondAttribute="trailing" constant="8" symbolic="YES" id="hxi-ZV-e9p"/>
+                                        <constraint firstItem="dN2-Zc-1fa" firstAttribute="leading" secondItem="FdO-Xl-RXq" secondAttribute="trailing" constant="-8" id="k3N-X9-CEe"/>
+                                        <constraint firstAttribute="trailing" secondItem="lyG-iN-shF" secondAttribute="trailing" id="lN8-kQ-wVb"/>
+                                        <constraint firstItem="lyG-iN-shF" firstAttribute="leading" secondItem="dRD-XK-KOD" secondAttribute="leading" id="seR-VU-hSL"/>
+                                        <constraint firstItem="FdO-Xl-RXq" firstAttribute="centerY" secondItem="dRD-XK-KOD" secondAttribute="centerY" id="tMH-gl-8yq"/>
+                                        <constraint firstItem="FdO-Xl-RXq" firstAttribute="top" secondItem="8th-Zs-IDz" secondAttribute="top" id="yqp-fO-jdJ"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="backgroundImageView" destination="lyG-iN-shF" id="hLi-1c-AY6"/>
+                                    <outlet property="paperSubTitleLabel" destination="1Qj-Nm-192" id="atX-Bb-Rxt"/>
+                                    <outlet property="paperTitleLabel" destination="8th-Zs-IDz" id="uJb-6m-XOw"/>
                                     <outlet property="seasonImageView" destination="FdO-Xl-RXq" id="7Ef-tg-QTB"/>
                                 </connections>
                             </tableViewCell>
@@ -104,4 +157,7 @@
             <point key="canvasLocation" x="154" y="-1228"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="01-January" width="375" height="480"/>
+    </resources>
 </document>
