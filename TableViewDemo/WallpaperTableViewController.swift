@@ -10,7 +10,6 @@ import UIKit
 
 class WallpaperTableViewController: UITableViewController {
     
-    var data:[Int:[WallPaper]] = DataSource().data
     var dataSource = DataSource()
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,10 +20,42 @@ class WallpaperTableViewController: UITableViewController {
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
         
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Add, target: self, action: #selector(addTapped))
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        self.refreshControl = UIRefreshControl()
+        refreshControl?.attributedTitle = NSAttributedString(string: "Pull To Refresh!")
+        self.refreshControl = UIRefreshControl()
+ 
+        self.tableView.addSubview(self.refreshControl!) // not required when using UITableViewController
+
+        self.refreshControl?.addTarget(self, action: #selector(refresh), forControlEvents: UIControlEvents.ValueChanged)
     }
     
+    func addTapped(sender:UIBarButtonItem){
+        var randSection = 0
+        arc4random_buf(&randSection, sizeof(Int))
+        randSection = abs(randSection % dataSource.numberOfSectionsInData())
+        
+        var randRow = 0
+        arc4random_buf(&randRow, sizeof(Int))
+        randRow = abs(randRow % dataSource.numberOfRowsInSection(randSection))
+        
+        let indexPath = NSIndexPath(forItem: randRow, inSection: randSection)
+        if let paper = dataSource.wallPaperForRowAtIndexPath(indexPath){
+            dataSource.data[0]?.append(paper)
+            let iPath = NSIndexPath(forRow: dataSource.data[0]!.count - 1, inSection: 0)
+            tableView.insertRowsAtIndexPaths([iPath], withRowAnimation: .Left)
+        }
+        
+    }
+    
+    func refresh(refreshControl:UIRefreshControl){
+        dataSource = DataSource()
+        self.tableView.reloadData()
+        refreshControl.endRefreshing()
+    }
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
